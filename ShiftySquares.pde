@@ -1,69 +1,118 @@
-int theSeed = 0;
-int sz = 30;
-float d;
+float x=0;
+float y=0;
+float fun2=random(10, 100);
+float fun3=20;
+float r=random(0, 255);
+float g=random(0, 255);
+float b=random(0, 255);
+int theSeed=0;
+int R=255;
+int G=255;
+int B=255;
+int R2=0;
+int G2=0;
+int B2=0;
+
+float s=0;
+float sy=0;
+
+float s2=0;
+float sy2=0;
+
+float s3=0;
+float sy3=0;
+
+float s4=0;
+float sy4=0;
+
+
 
 void setup() {
-  size(500, 500);
-  background(220);
+  size(400, 400);
   noStroke();
-  //noLoop();
 }
 
 void draw() {
-  background(220);
 
-  fill(0);
-  d = random(4);
-  textSize(40);
-  text(d, 50, 50);
-  
-  fill(78, 193, 78, 150);
 
-  //randomSeed(theSeed);
-  
-  int x = 0;
-  int y = 0;
-  while (x <= 450)
-  {
-    while (y <= 450)
-    {     
-      float shiftX1 = mouseX/10 * random(-1, 1);
-      float shiftY1 = mouseY/10 * random(-1, 1);
-      float shiftX2 = mouseX/10 * random(-1, 1);
-      float shiftY2 = mouseY/10 * random(-1, 1);
-      float shiftX3 = mouseX/10 * random(-1, 1);
-      float shiftY3 = mouseY/10 * random(-1, 1);
-      float shiftX4 = mouseX/10 * random(-1, 1);
-      float shiftY4 = mouseY/10 * random(-1, 1);
+  float fun=height/fun3;
+  fun2=random(10, 100);
+  background(255);
+  fill(r, g, b, 100);
+
+  randomSeed(theSeed);
+
+  y=0;
+  while (y<=height) {
+    x=0;
+
+
+    while (x<=width) {
+
+      r=random(R2, R);
+      g=random(G2, G);
+      b=random(B2, B);
+
+      s=mouseX/fun2 * random(-1, 1);
+      sy=mouseY/fun2 * random(-1, 1);
+
+      s2=mouseX/fun2 * random(-1, 1);
+      sy2=mouseY/fun2 * random(-1, 1);
+
+      s3=mouseX/fun2 * random(-1, 1);
+      sy3=mouseY/fun2 * random(-1, 1);
+
+      s4=mouseX/fun2 * random(-1, 1);
+      sy4=mouseY/fun2 * random(-1, 1);
+
       beginShape();
-      vertex(x+shiftX1, y+shiftY1);
-      vertex(x+sz+shiftX2, y+shiftY2);
-      vertex(x+sz+shiftX3, y+sz+shiftY3);
-      vertex(x+shiftX4, y+sz+shiftY4);
+      vertex(x+s, y+sy);
+      vertex(x+fun+s2, y+sy2);
+      vertex(x+fun+s3, y+fun+sy3);
+      vertex(x+s4, y+fun+sy4);
       endShape();
-      y = y + sz;
+
+      x=x+fun;
     }
-    x = x + sz;
-    y = 0;
+    y=y+fun;
   }
-  
+  //rect(mouseX-fun/2, mouseY-fun/2, fun, fun);
   
 }
-
 void mousePressed() {
- if(mouseButton == RIGHT) {
-   d = (int)(random(4));
- }
- 
+  theSeed = (int)random(1000);
 }
-
 void keyPressed() {
-  if (key == 'j') 
-  {
-    theSeed = (int)random(1000);
+  if (key=='r') {
+    R=255;
+    G=50;
+    B=50;
+    R2=100;
+    G2=0;
+    B2=0;
   }
-  if (key == ' ')
-  {
-    
+  if (key=='g') {
+    R=50;
+    G=255;
+    B=50;
+    R2=0;
+    G2=100;
+    B2=0;
+  }
+  if (key=='b') {
+    R=50;
+    G=50;
+    B=255;
+    R2=0;
+    G2=0;
+    B2=100;
+  }
+  if (key==' ') {
+    R=255;
+    G=255;
+    B=255;
+    R2=0;
+    G2=0;
+    B2=0;
   }
 }
