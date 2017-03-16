@@ -1,69 +1,72 @@
-int theSeed = 0;
-int sz = 30;
-float d;
+//Justin Kopf
+//Shifty Squares
+int x=0;
+int y=0;
+int sz=50;
+float shift=0;
+int r=0;
+int b=0;
+int g=0;
+int w=1;
+int z=1;
+int v=1;
 
 void setup() {
-  size(500, 500);
-  background(220);
+  size(1500, 1000);
+  background(255);
   noStroke();
-  //noLoop();
 }
-
 void draw() {
-  background(220);
+  background(255);
+  fill(r, g, b, 150);
+  randomSeed(40);
+  x=0;
+  while (x<=1500) {
 
-  fill(0);
-  d = random(4);
-  textSize(40);
-  text(d, 50, 50);
-  
-  fill(78, 193, 78, 150);
-
-  //randomSeed(theSeed);
-  
-  int x = 0;
-  int y = 0;
-  while (x <= 450)
-  {
-    while (y <= 450)
-    {     
-      float shiftX1 = mouseX/10 * random(-1, 1);
-      float shiftY1 = mouseY/10 * random(-1, 1);
-      float shiftX2 = mouseX/10 * random(-1, 1);
-      float shiftY2 = mouseY/10 * random(-1, 1);
-      float shiftX3 = mouseX/10 * random(-1, 1);
-      float shiftY3 = mouseY/10 * random(-1, 1);
-      float shiftX4 = mouseX/10 * random(-1, 1);
-      float shiftY4 = mouseY/10 * random(-1, 1);
+    while (y<=1000) {
+      shift=mouseX/10* random(-1, 1);
+      float shift1=mouseY/10* random(-1, 1);
+      
       beginShape();
-      vertex(x+shiftX1, y+shiftY1);
-      vertex(x+sz+shiftX2, y+shiftY2);
-      vertex(x+sz+shiftX3, y+sz+shiftY3);
-      vertex(x+shiftX4, y+sz+shiftY4);
+      vertex(x+shift, y+shift1);
+      vertex(x+sz+shift, y+shift1);
+      vertex(x+sz+shift, y+sz+shift1);
+      vertex(x+shift, y+sz+shift1);
       endShape();
-      y = y + sz;
+      y=y+sz;
     }
-    x = x + sz;
-    y = 0;
+    x=x+sz;
+    y=0;
   }
-  
-  
 }
-
-void mousePressed() {
- if(mouseButton == RIGHT) {
-   d = (int)(random(4));
- }
- 
-}
-
 void keyPressed() {
-  if (key == 'j') 
-  {
-    theSeed = (int)random(1000);
+  if (key == 'b') {
+    b=b+w;
+    if (b>=255) {
+      w=-1;
+    }
+    if (b<=0) {
+      w=1;
+    }
   }
-  if (key == ' ')
-  {
-    
+  if (key=='r') {
+    r=r+z;
+
+    if (r>=255) {
+      z=-1;
+    }
+    if (r<=0) {
+      z=1;
+    }
+  }
+   if (key=='g') {
+    g=g+v;
+
+    if (g>=255) {
+      v=-1;
+    }
+    if (g<=0) {
+      v=1;
+    }
   }
 }
