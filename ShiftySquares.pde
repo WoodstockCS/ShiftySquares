@@ -1,69 +1,51 @@
+//Shifty Squares after 2 major setbacks. Power outages and blue screens of death. 
+//Starter code from Justin Kopf
+
+int x = 0;
+int y = 0;
+int sz = 50;
 int theSeed = 0;
-int sz = 30;
-float d;
+int scale = 0;
+int r = 50;
+int g = 136;
+int b = 170;
+float q = 220;
 
 void setup() {
   size(500, 500);
-  background(220);
+  strokeWeight(1);
   noStroke();
-  //noLoop();
 }
-
 void draw() {
-  background(220);
-
-  fill(0);
-  d = random(4);
-  textSize(40);
-  text(d, 50, 50);
-  
-  fill(78, 193, 78, 150);
-
-  //randomSeed(theSeed);
-  
-  int x = 0;
-  int y = 0;
-  while (x <= 450)
+  background(q);
+  fill(r, g, b, 100);
+  randomSeed(theSeed);
+  x=0;
+  y=0;
+  while (x<=500)
   {
-    while (y <= 450)
-    {     
-      float shiftX1 = mouseX/10 * random(-1, 1);
-      float shiftY1 = mouseY/10 * random(-1, 1);
-      float shiftX2 = mouseX/10 * random(-1, 1);
-      float shiftY2 = mouseY/10 * random(-1, 1);
-      float shiftX3 = mouseX/10 * random(-1, 1);
-      float shiftY3 = mouseY/10 * random(-1, 1);
-      float shiftX4 = mouseX/10 * random(-1, 1);
-      float shiftY4 = mouseY/10 * random(-1, 1);
+    while (y<=500) {
+      float shiftx1=mouseX/50 * random(-1,1);
+      float shiftx2=mouseX/50 * random(-1,1);
+      float shiftx3=mouseX/50 * random(-1,1);
+      float shiftx4=mouseX/50 * random(-1,1);
+      float shifty1=mouseY/50 * random(-1,1);
+      float shifty2=mouseY/50 * random(-1,1);
+      float shifty3=mouseY/50 * random(-1,1);
+      float shifty4=mouseY/50 * random(-1,1);
       beginShape();
-      vertex(x+shiftX1, y+shiftY1);
-      vertex(x+sz+shiftX2, y+shiftY2);
-      vertex(x+sz+shiftX3, y+sz+shiftY3);
-      vertex(x+shiftX4, y+sz+shiftY4);
+      vertex(x+shiftx1, y+shifty1);
+      vertex(x+sz+shiftx2, y+shifty2);
+      vertex(x+sz+shiftx3, y+sz+shifty3);
+      vertex(x+shiftx4, y+sz+shifty4);
       endShape();
-      y = y + sz;
+      y=y+50;
     }
-    x = x + sz;
-    y = 0;
+    y=0;
+    x=x+50;
   }
-  
-  
-}
-
-void mousePressed() {
- if(mouseButton == RIGHT) {
-   d = (int)(random(4));
- }
- 
-}
-
-void keyPressed() {
-  if (key == 'j') 
-  {
-    theSeed = (int)random(1000);
-  }
-  if (key == ' ')
-  {
-    
-  }
+  r = mouseX*2;
+  g = mouseX-20;
+  b = mouseY/3;
+  q = random(0,220);
 }
