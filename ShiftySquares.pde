@@ -14,7 +14,7 @@ void setup() {
 }
 
 void draw() {
-  background(220);
+  background(180);
 
 
   fill(0);
