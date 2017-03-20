@@ -7,7 +7,7 @@ float b = 0;
 float theSeedTwo = 1;
 
 void setup() {
-  size(700, 700);
+  size(700, 900);
   background(220);
   noStroke();
   //noLoop();
