@@ -17,12 +17,12 @@ void draw() {
   background(220);
 
 
-  fill(0);
+  fill(200);
   //d = random(4);
   //textSize(40);
   //text(d, 50, 50);
 
-  fill(r, g, b, 150);
+  stroke(r, g, b, 150);
 
   randomSeed(theSeed);
 
